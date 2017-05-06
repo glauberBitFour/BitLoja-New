@@ -11,7 +11,7 @@ namespace BitFour.LojaVirtual.Web.Controllers
     public class VitrineController : Controller
     {
         private ProdutosRepositorio _repositorio;
-        public int ProdutosPorPagina = 3;
+        public int ProdutosPorPagina = 5;
 
 
         // GET: Vitrine

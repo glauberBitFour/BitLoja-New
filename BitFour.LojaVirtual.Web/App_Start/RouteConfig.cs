@@ -17,7 +17,7 @@ namespace BitFour.LojaVirtual.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
 
-            //1 -rota inical da busca de produtos todas as  categorias
+            //1 -rota inical da busca de produtos todas as  categorias /
             routes.MapRoute(null, "", new { controller = "Vitrine", action = "ListaProdutos", categoria = (string)null, pagina = 1 });
             //--------------------------------------------------------------------------------------------------------------------
 
@@ -25,7 +25,7 @@ namespace BitFour.LojaVirtual.Web
 
 
 
-            //segunda rota  lista a pagina 
+            //segunda rota  lista as paginas, PAgina1,Pagina2 etc
             routes.MapRoute(null, "Pagina{pagina}", new { controller = "Vitrine", action = "ListaProdutos", categoria = (string)null }, new { pagina = @"\d+" });
 
             //----------------------------------------------------------------------------------------------------------------------------------------------
@@ -34,7 +34,7 @@ namespace BitFour.LojaVirtual.Web
 
 
 
-            //terceira rota somente a os produtos da categoria 
+            //terceira rota somente a os produtos da categoria ex /Futebol
             routes.MapRoute(null, "{categoria}", new { controller = "Vitrine", action = "ListaProdutos", pagina = 1 });
 
             //----------------------------------------------------------------------------------------------------------
@@ -44,7 +44,7 @@ namespace BitFour.LojaVirtual.Web
 
 
 
-            //trás todas as paginas da categoria
+            //trás todas as paginas da categoria /Futebol/Pagina2
             routes.MapRoute(null, "{categoria}/Pagina{pagina}", new { controller = "Vitrine", action = "ListaProdutos" }, new { pagina = @"\d+" });
 
             //-------------------------------------------------------------------------------------------------------------------------------

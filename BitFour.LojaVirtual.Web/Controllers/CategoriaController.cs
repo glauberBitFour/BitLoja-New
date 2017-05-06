@@ -17,7 +17,7 @@ namespace BitFour.LojaVirtual.Web.Controllers
         // GET: Categoria
         public PartialViewResult Menu(string categoria=null)
         {
-            ViewBag.CategoriaSelecionada = categoria;
+            ViewBag.CategoriaSelecionada = categoria;//transfere qual categoria está apresentada paara o menu da categoria
             _repositorio = new ProdutosRepositorio();
             IEnumerable<string> categorias = _repositorio.Produtos
                 .Select(c => c.Categoria)

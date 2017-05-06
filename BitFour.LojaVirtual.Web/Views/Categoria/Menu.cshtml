@@ -1,18 +1,30 @@
 ﻿@model System.Collections.Generic.IEnumerable<string>
 
-@Html.ActionLink("TODOS OS PRODUTOS ", "ListaProdutos", "Vitrine", null, new { @class= "btn btn-block btn-default btn-lg"})
 
 
+
+@*criando link do menu categoria*@
+@Html.ActionLink("TODOS OS PRODUTOS ", "ListaProdutos", "Vitrine", null, new { @class= "btn btn-block btn-default btn-lg" })
+
+
+
+
+@*  Criando menu de categoias *@
 @foreach (var link in Model)
 {
+
+    @*cria os links dos botoes do menu*@
     @Html.RouteLink(link, new
 {
-    controller = "Vitrine",
-    action = "ListaProdutos",
+    controller = "Vitrine",@*controller*@
+    action = "ListaProdutos",@*action*@
     categoria = link,
     pagina = 1
-},new { @class= "btn btn-block btn-default btn-lg"
-    +(link == ViewBag.CategoriaSelecionada ? " btn-primary" : "")
+},
+@*criando a classe do botao estilizado do bootstrap*@
+new { @class= "btn btn-block btn-default btn-lg"
+@*e adcionando classe de quando existir uma categoria selecionada *@
+    + (link == ViewBag.CategoriaSelecionada ? " btn-primary" : "")
 
 
 })

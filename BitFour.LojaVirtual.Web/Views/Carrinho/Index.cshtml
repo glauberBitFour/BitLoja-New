@@ -29,7 +29,7 @@
                 <td>
                     @using (Html.BeginForm("Remover", "Carrinho"))
                     {
-                        @Html.Hidden("ProdutoId", item.Produto.produtoId)
+                        @Html.Hidden("ProdutoId", item.Produto.ProdutoId)
                         @Html.HiddenFor(x => x.ReturnUrl)
                         <input class="btn btn-sm btn-warning" type="submit" value="Remover" />
                     }

@@ -13,7 +13,7 @@ namespace BitFour.LojaVirtual.Web.Controllers
         public RedirectToRouteResult Adicionar(int produtoId, string returnUrl)
         {
             _repositorio = new ProdutosRepositorio();
-            Produto produto = _repositorio.Produtos.FirstOrDefault(p => p.produtoId == produtoId);
+            Produto produto = _repositorio.Produtos.FirstOrDefault(p => p.ProdutoId == produtoId);
             if (produto != null)
             {
                 ObterCarrinho().AdcionarItem(produto, 1);
@@ -43,7 +43,7 @@ namespace BitFour.LojaVirtual.Web.Controllers
             _repositorio = new ProdutosRepositorio();
 
             Produto produto = _repositorio.Produtos
-                .FirstOrDefault(p => p.produtoId == produtoId);
+                .FirstOrDefault(p => p.ProdutoId == produtoId);
 
             if (produto != null)
             {

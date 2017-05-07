@@ -16,8 +16,8 @@ namespace BitFour.LojaVirtual.Dominio.Entidades
         public void AdcionarItem(Produto produto, int quantidade)
         {
 
-                                                   //esse metodo retorna o primeiro elemento da sequencia 
-            ItemCarrinho item = _itemCarrinho.FirstOrDefault(p => p.Produto.produtoId == produto.produtoId);
+           //firstOrDefault, esse metodo retorna o primeiro elemento da sequencia 
+            ItemCarrinho item = _itemCarrinho.FirstOrDefault(p => p.Produto.ProdutoId == produto.ProdutoId);
             if (item == null)
             {
                 _itemCarrinho.Add(new ItemCarrinho {
@@ -37,7 +37,7 @@ namespace BitFour.LojaVirtual.Dominio.Entidades
         public void RemoverItem(Produto produto)
         {
                              //esse metodo remove todos os elementos 
-            _itemCarrinho.RemoveAll(l => l.Produto.produtoId == produto.produtoId);
+            _itemCarrinho.RemoveAll(l => l.Produto.ProdutoId == produto.ProdutoId);
         }
            
         
@@ -67,7 +67,10 @@ namespace BitFour.LojaVirtual.Dominio.Entidades
         {
             get { return _itemCarrinho; }
         }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
-    }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+    }       
+    
+    
+    //classe parcial com os itens do carrinho                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
     public class ItemCarrinho
     {
         public Produto Produto { get; set; }

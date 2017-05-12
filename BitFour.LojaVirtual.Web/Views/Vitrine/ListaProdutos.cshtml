@@ -3,7 +3,7 @@
 
 @foreach (var p in Model.Produtos)
 {
-    //foi criada a classe detalhes para refatorar o codigo e tambem poder usar em outras partes do sistema 
+    //foi criada a classe detalhes para refatorar o codigo e tambem poder usar em outras partes do sistema,classe parcial 
     @Html.Partial("ProdutoDetalhes",p)
 
 }

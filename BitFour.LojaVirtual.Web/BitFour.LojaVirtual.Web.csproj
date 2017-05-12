@@ -148,7 +148,10 @@
     <Content Include="Views\Vitrine\ListaProdutos.cshtml" />
     <Content Include="Views\Shared\ProdutoDetalhes.cshtml" />
     <Content Include="Views\Categoria\Menu.cshtml" />
-    <Content Include="Views\Carrinho\Index.cshtml" />
+    <Content Include="Views\Carrinho\Adicionar.cshtml" />
+    <Content Include="Views\Carrinho\CarrinhoIndex.cshtml" />
+    <None Include="Views\Carrinho\Index.cshtml" />
+    <Content Include="Views\Carrinho\Resumo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

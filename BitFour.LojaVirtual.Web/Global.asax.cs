@@ -13,6 +13,8 @@ namespace BitFour.LojaVirtual.Web
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            
         }
     }
 }

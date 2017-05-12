@@ -11,32 +11,41 @@
     <script src="~/Scripts/bootstrap.min.js"></script>
 </head>
 <body>
-    
-    <div class="navbar navbar-inverse">
-        <a class="navbar-brand" href="#"> BitFour - Tecnology</a>
+
+    @*<div class="navbar navbar-inverse">
+            <a class="navbar-brand" href="#">BitFour-Tecnology</a>
+            @Html.Action("Resumo", "Carrinho")
+        </div>*@
+
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">BitFour-Tecnology</a>
+            <div class="navbar-right">
+
+                @Html.Action("Resumo", "Carrinho")
+
+            </div>
+        </div>
     </div>
 
 
-            
-        <div class="row panel">
-            <div id="categorias" class="col-xs-3">
-               @Html.Action(@*action*@"Menu",@*controller*@"Categoria")
-            </div>
-
-
-
-
-            <div id="categorias" class="col-xs-8">
-                @RenderBody()
-            </div>
+    <div class="row panel">
+        <div id="categorias" class="col-xs-3">
+            @Html.Action(@*action*@"Menu",@*controller*@"Categoria")
         </div>
-        <div class="container text-center">
 
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - BitFour TECNOLOGY</p>
-            </footer>
+
+        <div id="categorias" class="col-xs-8">
+            @RenderBody()
         </div>
-    
+    </div>
+    <div class="container text-center">
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - BitFour TECNOLOGY</p>
+        </footer>
+    </div>
+
 </body>
 </html>

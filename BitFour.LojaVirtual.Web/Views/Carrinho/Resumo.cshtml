@@ -1,0 +1,44 @@
+﻿
+@model BitFour.LojaVirtual.Dominio.Entidades.Carrinho
+
+
+
+@*Classe parcial que foi criada para fazer um checkout na navbar para mostrar o que tem no carrinho*@
+<style id="t">
+    #t {
+        color:black;
+        font-size: 18px;
+        padding-right: 30px;
+        margin-top: 6px;
+        margin-inside: 10px;
+
+    }
+    #teste {
+  border: 1px solid;
+  background-color:#a3a2f1;
+  width:200px;
+  margin-left:5px;
+  margin-top:5px;
+  float:left;
+  padding: 4px;
+}
+</style>
+
+@*<div class="navbar-right">
+        @Html.ActionLink("Checkout", "CarrinhoIndex", "Carrinho", new { returnUrl = Request.Url.PathAndQuery }, new { @class = "btn btn-default navbar-btn" })
+    </div>*@
+<div class="navbar-right">
+
+    <button id="t" type="button" class="btn btn-default btn-sm">
+       
+            <span class="glyphicon glyphicon-shopping-cart"></span>
+            @Html.ActionLink("Checkout", "CarrinhoIndex", "Carrinho", new { returnUrl = Request.Url.PathAndQuery })
+        
+    </button>
+</div>
+
+    <div class="navbar-text navbar-right">
+        Seus Produtos:
+        @*calcula todos os itens que existem no carrinho *@
+        @Model.ItensCarrinho.Sum(i => i.Quantidade) item(s), @Model.ObterValorTotal().ToString("c")
+    </div>

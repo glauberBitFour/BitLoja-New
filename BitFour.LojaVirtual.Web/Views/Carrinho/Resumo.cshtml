@@ -4,8 +4,8 @@
 
 
 @*Classe parcial que foi criada para fazer um checkout na navbar para mostrar o que tem no carrinho*@
-<style id="t">
-    #t {
+<style id="carrinhoCheck">
+    #CheckCarrinho {
         color:black;
         font-size: 18px;
         padding-right: 30px;
@@ -22,6 +22,9 @@
   float:left;
   padding: 4px;
 }
+
+
+
 </style>
 
 @*<div class="navbar-right">
@@ -29,7 +32,7 @@
     </div>*@
 <div class="navbar-right">
 
-    <button id="t" type="button" class="btn btn-default btn-sm">
+    <button id="CheckCarrinho" type="button" class="btn btn-default btn-sm">
        
             <span class="glyphicon glyphicon-shopping-cart"></span>
             @Html.ActionLink("Checkout", "CarrinhoIndex", "Carrinho", new { returnUrl = Request.Url.PathAndQuery })

@@ -150,6 +150,7 @@
     <Content Include="Views\Categoria\Menu.cshtml" />
     <Content Include="Views\Carrinho\Adicionar.cshtml" />
     <Content Include="Views\Carrinho\CarrinhoIndex.cshtml" />
+    <Content Include="Views\Carrinho\FecharPedido.cshtml" />
     <None Include="Views\Carrinho\Index.cshtml" />
     <Content Include="Views\Carrinho\Resumo.cshtml" />
     <None Include="Web.Debug.config">

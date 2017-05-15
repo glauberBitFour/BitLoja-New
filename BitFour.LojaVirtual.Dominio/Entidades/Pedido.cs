@@ -21,6 +21,10 @@ namespace BitFour.LojaVirtual.Dominio.Entidades
         [Display(Name = "Complemento:")]
         public string Complememento { get; set; }
 
+        [Display(Name = ("Estado"))]
+        public string Estado { get; set; }
+
+
         [Required(ErrorMessage = "Informe sua cidade:")]
         [Display(Name = "Cidade")]
         public string Cidade { get; set; }

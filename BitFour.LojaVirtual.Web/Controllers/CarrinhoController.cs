@@ -84,9 +84,6 @@ namespace BitFour.LojaVirtual.Web.Controllers
             return View( new Pedido());
         }
 
-
-     
-
     }
 }
 

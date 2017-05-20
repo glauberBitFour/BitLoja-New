@@ -16,70 +16,112 @@
 {
     @Html.ValidationSummary()
     <h3>Enviar para</h3>
-    <div class="form-group">
-        <label>Nome do cliente: </label>
-        @Html.TextBoxFor(c => c.NomeCliente, new { @class = "form-control" })
-    </div>
-    <br />
-
-
-
-    <div class="form-inline">
-        <h3>Dados para entrega</h3>
-        <h3>Endereço</h3>
-
+    <div style="background-color: rgb(242, 242, 242)">
         <div class="form-group">
-            <label>Cep:</label>
-            @Html.TextBoxFor(c => c.Cep, new {@class = "form-control"})
+            <label>Nome do cliente: </label>
+            @Html.TextBoxFor(c => c.NomeCliente, new { @class = "form-control" })
         </div>
-        <div class="form-group" style="margin-left: 50px">
-            <label>Endereço:</label>
+        <br />
 
-            @Html.TextBoxFor(c => c.Endereco, new { @class = "form-control" })
-        </div>
-    </div>
-
-
-    <br/>
-    <div class="form-inline">
-        <div class="form-group">
-            <label>Complemento:</label>
-            @Html.TextBoxFor(c => c.Complememento, new { @class = "form-control" })
-        </div>
 
 
         <div class="form-group">
-            <label>Cidade:</label>
-            @Html.TextBoxFor(c => c.Cidade, new { @class = "form-control" })
+            <h3>Dados para entrega</h3>
+            <h3>Endereço</h3>
+
+            <div class="form-group col-lg-4">
+                <label>Cep:</label>
+                @Html.TextBoxFor(c => c.Cep, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label>Endereço:</label>
+
+                @Html.TextBoxFor(c => c.Endereco, new { @class = "form-control" })
+            </div>
         </div>
-    </div>
 
 
-            <label>Bairro:</label>
-            @Html.TextBoxFor(c => c.Bairro, new { @class = "form-control" })
+        <br />
+        <div class="form-group">
+            <div class="form-group col-lg-4">
+                <label>Complemento:</label>
+                @Html.TextBoxFor(c => c.Complememento, new { @class = "form-control" })
+            </div>
 
 
+            <div class="form-group">
+                <label>Cidade:</label>
+                @Html.TextBoxFor(c => c.Cidade, new { @class = "form-control" })
+            </div>
+        </div>
 
-            <label>Estado:</label>
-            @Html.TextBoxFor(c => c.Estado, new { @class = "form-control" })
+        <div class="form-group">
+            <div class="form-group col-lg-4">
+                <label>Bairro:</label>
+                @Html.TextBoxFor(c => c.Bairro, new { @class = "form-control" })
+            </div>
 
+            <div class="form-group">
+                <label>Estado:</label>
+                @Html.TextBoxFor(c => c.Estado, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group col-lg-10" style="width: 300px;">
+            <label>E-mail:</label>
+            @Html.TextBoxFor(c => c.Email, new { @class = "form-control" })
+        </div>
 
-    <div class="form-group">
-        <label>E-mail:</label>
-        @Html.TextBoxFor(c => c.Email, new {@class = "form-control"})
-    </div>
-
-    <h3>Opções</h3>
+        <h3>Opções:</h3>
         <div class="checkbox"></div>
         <label>
             @Html.EditorFor(c => c.EnbrulhaPresente)
             Embrulhar para presente?
         </label>
+        <style>
+            #button {
+                margin-left: 200px;
+                margin-right: 500px;
+                margin-top: 50px;
+            }
+        </style>
 
-        <input class="btn btn-primary" type="submit" value="Fechar o pedido" />
+        <div class="form-group col-lg-6" id="button">
+            <input class="btn btn-primary" type="submit" value="Fechar o pedido" />
+        </div>
+    </div>
+
+    <hr />
+
+
 }
+    }
+//funçao jquery para pegar dados do cep atraves do webservice de ceps repbluicavirtual
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
 
+    $('#Cep').change(function(e) {
 
+        e.preventDefault();
 
+        $("#Endereco").val('');
+        $("#Bairro").val('');
+        $("#Cidade").val('');
+        $("#Estado").val('');
 
+        var cep = $('#Cep').val().replace("-", "");
+
+        $.getJSON("http://cep.republicavirtual.com.br/web_cep.php?cep=" + cep + "&formato=json", {}, function(data) {
+
+            if (data.resultado_txt == 'sucesso - cep completo') {
+
+                $("#Endereco").val(data.tipo_logradouro + ' ' + data.logradouro);
+                $("#Bairro").val(data.bairro);
+                $("#Cidade").val(data.cidade);
+                $("#Estado").val(data.uf);
+
+            }
+        });
+    });
+</script>
 

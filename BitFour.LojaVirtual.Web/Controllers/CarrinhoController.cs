@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Configuration;
+using System.Linq;
 using System.Web.Mvc;
 using BitFour.LojaVirtual.Dominio.Entidades;
 using BitFour.LojaVirtual.Dominio.Repositorio;
@@ -82,6 +83,38 @@ namespace BitFour.LojaVirtual.Web.Controllers
         {
 
             return View( new Pedido());
+        }
+
+        [HttpPost]
+        public ViewResult FecharPedido(Pedido pedido)
+        {
+            Carrinho carrinho = ObterCarrinho();
+
+            EmailConfiguracoes email = new EmailConfiguracoes
+            {
+                EscreverArquivo = bool.Parse(ConfigurationManager.AppSettings["Email.EscreverArquivo"] ?? "false")
+
+            };
+            EmailProcessarPedido processapedido = new EmailProcessarPedido(email);
+            if (!carrinho.ItensCarrinho.Any())
+            {
+                ModelState.AddModelError("","Não foi possivel concluir o seu pedido, seu carrinho está vazio");
+            }
+            if (ModelState.IsValid)
+            {
+                processapedido.ProcessarPedido(carrinho, pedido);
+                carrinho.LimparCarrinho();
+                return View("PedidoConcluido");
+            }
+            else
+            {
+                return View(pedido);
+            }
+        }
+
+        public ViewResult PedidoConcluido()
+        {
+            return View();
         }
 
     }

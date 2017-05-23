@@ -7,7 +7,7 @@
         public int ServidorPorta = 587;
         public string Usuario = "Glauber";
         public bool EscreverArquivo = false;
-        public string PastaDoArquivo = @"c:\envioenail";
+        public string PastaDoArquivo = @"C:\Users\Glauber\Desktop\gravaemail";
         public string Para = "grobis@hotmail.com";
         public string De = "glaubercasttro@gmail.com";
     }

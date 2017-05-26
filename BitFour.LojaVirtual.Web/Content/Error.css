@@ -1,6 +1,7 @@
 ﻿
-.input-validation-error {
+.input-validation-error{
     background-color: #ff0000;
+    border: #ff0000;
 }
 .field-validation-error {
     color: #ff0000;

@@ -15,6 +15,7 @@ namespace BitFour.LojaVirtual.Web.Controllers
 
 
         // GET: Vitrine
+        //lista de produtos adicionando a paginaçao
         public ViewResult ListaProdutos(string categoria, int pagina = 1)
         {
             _repositorio = new ProdutosRepositorio();

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using BitFour.LojaVirtual.Dominio.Repositorio;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -13,8 +15,11 @@ namespace BitFour.LojaVirtual.Web
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            //desabilitando possiveis migraçoes do banco
+            Database.SetInitializer<EfDbContext>(null);
 
-            
         }
     }
+
+    
 }

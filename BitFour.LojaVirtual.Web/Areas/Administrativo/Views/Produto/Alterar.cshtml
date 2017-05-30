@@ -31,6 +31,7 @@
 
                     <div class="form-group">
                         <label>
+                            <!--coloca o nome de cada atributo do modelo produto-->
                             @(property.DisplayName ?? property.PropertyName)
                         </label>
                         @if (property.PropertyName == "Descricao")
@@ -39,8 +40,12 @@
                         }
                         else
                         {
+                            //renderiza os campos que nao forem igual a descriçao, Nome, descriçao e preco do modelo produto
                             @Html.TextBox(property.PropertyName, null, new {@class = "form-control"})
                         }
+
+                        <!--Helper para validar o formulario,para cada item esta criando uma validaçao -->
+                        @Html.ValidationMessage(property.PropertyName)
                     </div>
                 }
             }
@@ -54,6 +59,25 @@
         </div>
     }
 </div>
+
+
+<!--Para fazer a validaçao pelo javascript para preço é preciso baixar no projeto web PM> Install-Package Microsoft.jQuery.Unobstrusive.Validation -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @*@using (Html.BeginForm())
 {

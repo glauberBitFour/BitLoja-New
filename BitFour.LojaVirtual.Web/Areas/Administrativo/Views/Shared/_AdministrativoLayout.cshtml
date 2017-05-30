@@ -12,8 +12,9 @@
 </head>
 <body>
     <div>
-        @if (TempData["mensagem"]!=null)
+        @if (TempData["mensagem"]!=null)    
         {
+            <!--recebe a mensagem de alteraçao da produto controller-->
             <div class="alert alert-success">@TempData["mensagem"]</div>
         }
         @RenderBody()

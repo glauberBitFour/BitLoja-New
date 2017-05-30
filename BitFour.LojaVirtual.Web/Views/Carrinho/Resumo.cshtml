@@ -33,9 +33,16 @@
 <div class="navbar-right">
 
     <button id="CheckCarrinho" type="button" class="btn btn-default btn-sm">
-       
-            <span class="glyphicon glyphicon-shopping-cart"></span>
+        <span class="glyphicon glyphicon-shopping-cart"></span>
+        @if (Model.ObterValorTotal() == 0)
+        {
+            @Html.ActionLink("Vazio", "CarrinhoIndex", "Produto" , new { returnUrl = Request.Url.PathAndQuery })
+        }
+        else
+        {
             @Html.ActionLink("Checkout", "CarrinhoIndex", "Carrinho", new { returnUrl = Request.Url.PathAndQuery })
+        }
+            
         
     </button>
 </div>

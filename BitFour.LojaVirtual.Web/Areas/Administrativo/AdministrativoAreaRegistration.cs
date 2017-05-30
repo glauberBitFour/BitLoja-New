@@ -14,6 +14,8 @@ namespace BitFour.LojaVirtual.Web.Areas.Administrativo
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
+
+            //para nao ter problema de ter 2 Index no projeto
             context.MapRoute(
                 "Administrativo_default",
                 "Administrativo/{controller}/{action}/{id}", defaults: new

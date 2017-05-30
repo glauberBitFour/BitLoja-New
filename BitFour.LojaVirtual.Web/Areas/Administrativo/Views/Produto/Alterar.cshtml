@@ -1,0 +1,68 @@
+﻿ @model BitFour.LojaVirtual.Dominio.Entidades.Produto
+
+@{
+    ViewBag.Title = "Alterar" + @Model.Nome;
+    Layout = "~/Areas/Administrativo/Views/Shared/_AdministrativoLayout.cshtml";
+    /*@*utilizando o mesmo layout da area administrativa setado quando for gerar o scalfoding*@*/
+}
+
+<h2>Alterar - @Model.Nome</h2>
+
+
+
+<div class="panel">
+    <div class="panel-heading">
+        
+    </div>
+    @using (Html.BeginForm())
+    {
+
+        <h2>
+            Categoria - @Model.Categoria
+        </h2>
+        <div class="panel-body">
+            @Html.HiddenFor(m => m.ProdutoId)
+            @foreach (var property  in ViewData.ModelMetadata.Properties)
+            {
+                if (property.PropertyName != "ProdutoId")
+                {
+
+                    
+
+                    <div class="form-group">
+                        <label>
+                            @(property.DisplayName ?? property.PropertyName)
+                        </label>
+                        @if (property.PropertyName == "Descricao")
+                        {
+                            @Html.TextArea(property.PropertyName, null, new {@class = "form-control", rows = 5})
+                        }
+                        else
+                        {
+                            @Html.TextBox(property.PropertyName, null, new {@class = "form-control"})
+                        }
+                    </div>
+                }
+            }
+        </div>
+
+
+        <div class="panel-footer">
+            <input class="btn btn-primary" type="submit" value="Salvar"/>
+
+            @Html.ActionLink("Cancelar Alteração","Index",null, new {@class="btn btn-default"})
+        </div>
+    }
+</div>
+
+@*@using (Html.BeginForm())
+{
+    @Html.EditorForModel()
+
+    <input type="submit" value="Salvar"/>
+    @Html.ActionLink("Cancelar e retornar","Index")
+    
+
+}*@
+
+

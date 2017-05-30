@@ -46,7 +46,7 @@ namespace BitFour.LojaVirtual.Dominio.Entidades
 
                    }
                    body.AppendFormat("Valor Total do Pedido:{0:c}", carrinho.ObterValorTotal())
-                       .AppendLine("------------------------------")
+                       .AppendLine("---------------")
                        .AppendLine("Enviar para:")
                        .AppendLine(pedido.NomeCliente)
                        .AppendLine(pedido.Endereco ?? "")

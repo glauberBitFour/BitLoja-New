@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 using BitFour.LojaVirtual.Dominio.Entidades;
 using BitFour.LojaVirtual.Dominio.Repositorio;
 
 namespace BitFour.LojaVirtual.Web.Areas.Administrativo.Controllers
 {
+
+
+
+    [Authorize]
     public class ProdutoController : Controller
     {
 

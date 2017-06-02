@@ -16,7 +16,7 @@ namespace BitFour.LojaVirtual.Web
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             //desabilitando possiveis migraçoes do banco
-            Database.SetInitializer<EfDbContext>(null);
+            //Database.SetInitializer<EfDbContext>(null);
 
         }
     }

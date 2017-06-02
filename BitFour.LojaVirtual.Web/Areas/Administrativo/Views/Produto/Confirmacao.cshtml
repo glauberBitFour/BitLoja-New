@@ -1,0 +1,175 @@
+﻿<!--Modal para confirmaçao de exclusao de produto-->
+1
+
+@*<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+     <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="deleteModalLabel">Exclusão</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" />
+                <p>Deseja excluir o produto?<em><strong>"<span></span>"</strong></em>&nbsp;?</p>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-success">Confirmar?</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!--criando script jquery para executar o modal de exclusao de produto-->
+<script>
+    $(function() {
+        //Abrir o modal quando clicar no botao de exclusao
+
+        $(".btn-xs").click(function(e) {
+            e.preventDefault();
+            var id = this.id;
+            //alert(id);
+
+            var nome = this.name;
+
+            //recupera todos os elementos do Modal o id, o nome do produto
+            $("#deleteModal .modal-body input[type=hidden]").val(id);
+            $("#deleteModal .modal-body span").text(nome);
+            //esse metodo chama o modal 
+            $("#deleteModal").modal('show');
+
+        });
+
+        //esse metodo chama o evento do click do botao confirmar
+        $("#deleteModal .modal-footer button").click(function(e) {
+
+            //alert("sou o botao exluir");
+
+            //esse metodo elimina o comportamento padrao do botao que é enviar um post/get
+            e.preventDefault();
+
+            //recupera o caminho da acao do metodo exluir
+            var url = "Administrativo/Produto/Excluir/";
+            //resgata o valor do id para mandar para o metodo exlcuir que espera um id de um produto para exluir o mesmo
+            var id = $(" .modal-body input[type=hidden]").val();
+            //recupera o numero da linha para elminar a linha na tabela de produtos
+            var rowNumero = "#row-" + id;
+
+            //metodo Ajax precisa de alguns paramentros 
+            $.Ajax({
+                url: url,
+                type: 'post',
+                dataType: 'json',
+                data: { produtoId: id },
+                beforeSend: function() {
+                    var loading = "<span><em>Excluindo</em>&nbsp;<i class='glyphicon glyphicon-refresh icon-refresh-animate'></i></span>";
+                    $('#deleteModal .modal-header h4').after(loading);
+                    loading.clean();
+                },
+                sucess: function() {
+                    $('#deleteModal').modal('hide');
+                    $(rowNumero).animate({ opacity: 0.0 }, 400, function() {
+                        $(rowNumero).remove();
+                    });
+                },
+                complete: function(data) {
+                    //$("#mensagem").show();
+                    //$("#mensagem").html(data.responseText);
+
+                    
+                    $("#divExcluir").empty();
+                    $("#divExcluir").addClass("alert alert-success");
+                    $("#divExcluir").html(data.responseText);
+                }
+                });
+        });
+    });
+</script>*@
+
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="deleteModalLabel">Exclusão</h4>
+            </div>
+
+            <div class="modal-body">
+                <input type="hidden" />
+                <p>Deseja excluir o produto <em><strong>"<span></span>"</strong></em>&nbsp;?</p>
+            </div>
+
+            <div id="btn" class="modal-footer">
+                <button class="btn btn-success" type="button">Confirmar</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<script>
+
+    $(function () {
+
+        //Abrir o modal
+
+        $(".btn-xs").click(function (e) {
+            e.preventDefault();
+            var id = this.id;
+            var nome = this.name;
+            $("#deleteModal .modal-body input[type=hidden]").val(id);
+            $("#deleteModal .modal-body span").text(nome);
+            $("#deleteModal").modal('show');
+            
+
+        });
+       
+
+      
+
+        $("#deleteModal .modal-footer button").click(function (e) {
+
+            e.preventDefault();    
+            var url = "/Administrativo/Produto/Excluir/";
+            var id = $(".modal-body input[type=hidden]").val();
+            var rowNo = '#row-' + id;
+
+            $.ajax({
+                url: url,
+                type: 'post',
+                dataType: 'json',
+                data: { produtoId: id },
+                beforeSend: function() {
+                    var loading = "<span><em>Excluindo</em>&nbsp;<i class='glyphicon glyphicon-refresh icon-refresh-animate'></i></span>";
+                    $('#deleteModal .modal-header h4').after(loading);
+                    
+
+
+                },
+
+
+                success: function() {
+
+                    $('#deleteModal').modal('hide');
+                    $(rowNo).animate({ opacity: 0.0 }, 400, function() {
+                        $(rowNo).remove();
+                        $("#divExcluir").empty(
+                    });
+                },
+                complete: function(data) {
+                    $("#divexcluir").empty();
+                    $("#divexcluir").addClass("alert alert-success");
+                    $("#divexcluir").html(data.responseText);
+ 
+
+                }
+
+
+            });
+        });
+
+       
+    });
+</script>

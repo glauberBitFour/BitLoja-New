@@ -6,6 +6,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace BitFour.LojaVirtual.Dominio.Repositorio
 {
@@ -45,11 +46,27 @@ namespace BitFour.LojaVirtual.Dominio.Repositorio
                      prod.Preco = produto.Preco;
                      prod.Categoria = produto.Categoria;
                  }
-                 _context.SaveChanges();
+
              }
-         }
+            _context.SaveChanges();
+        }
 
 
+
+        //Excluir produto
+         public Produto Excluir(int produtoId)
+         {
+
+             Produto prod = _context.Produtos.Find(produtoId);
+             if (prod != null)
+             {
+                 _context.Produtos.Remove(prod);
+                 _context.SaveChanges();
+
+                 
+             }
+            return prod;
+        }
         
     }
 }

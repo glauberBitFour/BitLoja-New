@@ -45,12 +45,49 @@ namespace BitFour.LojaVirtual.Web.Areas.Administrativo.Controllers
                 _repositorio.Salvar(produto);
                 //Manda essa mesnagem pra layoutadministrativo
                 TempData["Mensagem"] = string.Format("{0} Foi salvo com sucesso", produto.Nome);
-                return RedirectToAction("Index");
+                 return RedirectToAction("Index");
 
             }
             return View(produto);
         }
 
+
+        //para nao precisar criar uma nova view Novo produto, entao 
+        public ViewResult NovoProduto()
+        {
+            return View("Alterar", new Produto());
+        }
+
+
+        //[HttpPost]
+        //public ActionResult Excluir(int produtoId)
+        //{
+        //    _repositorio = new ProdutosRepositorio();
+        //    Produto prod = _repositorio.Excluir(produtoId);
+
+        //    if (prod != null)
+        //    {
+        //        TempData["mensagem"] = string.Format("{0} excluido com sucesso", prod.Nome);
+        //    }
+        //    return RedirectToAction("Index");
+        //}
+
+
+
+            //criando Modal de confirmaçao de exlcusao do Bootstrap para excluir um produto
+        [HttpPost]
+        public JsonResult Excluir(int produtoId)
+        {
+            string mensagem = string.Empty;
+            _repositorio = new ProdutosRepositorio();
+            Produto prod = _repositorio.Excluir(produtoId);
+
+            if (prod != null)
+            {
+                mensagem = string.Format("{0} excluido com sucesso", prod.Nome);
+            }
+            return Json(mensagem,JsonRequestBehavior.AllowGet);
+        }
 
     }
 }

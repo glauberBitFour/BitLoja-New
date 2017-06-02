@@ -25,6 +25,8 @@
         <h3>Bitfour Loja virtual</h3>
     </div>
 
+    <div id="divExcluir"></div>
+
 
     <div class="panel-body"> @*<a href="/Administrativo/NovoProduto?length=7" class="btn btn-default">Novo Produto</a>*@
         @Html.ActionLink("Novo Produto", "NovoProduto", "Produto", new {@class = "btn btn-default"})
@@ -54,11 +56,17 @@
                         @item.Preco.ToString("c")
                     </td>
                     <td class="text-center">
-                        @using (Html.BeginForm("Excluir", "Produto"))
+                        <!--foi comentando pelo fato de estar criando o modal para confirmaçao de exclusao do cpf-->
+                        @*@using (Html.BeginForm("Excluir", "Produto"))
                         {
                             @Html.Hidden("ProdutoId", item.ProdutoId)
                             <input type="submit" class="btn btn-default btn-xs" value="Excluir"/>
-                        }
+                        }*@
+
+
+
+
+                        <input type="submit" class="btn btn-default btn-xs" id="@item.ProdutoId" name="@item.Nome" value="Excluir"/>
                     </td>
                 </tr>
             }
@@ -71,4 +79,5 @@
 
 
 
-
+<!--criando o modal de confirmaçao-->
+@Html.Partial("Confirmacao")

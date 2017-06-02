@@ -8,7 +8,7 @@ namespace BitFour.LojaVirtual.Dominio.Entidades
      public class Produto
     {
 
-        //escondendo o Id na View
+        //Hidden input quer duzer que esta escondendo o Id na View
         [HiddenInput(DisplayValue = false)]
         public int ProdutoId { get; set; }
 

@@ -6,7 +6,7 @@
     /*@*utilizando o mesmo layout da area administrativa setado quando for gerar o scalfoding*@*/
 }
 
-<h2>Alterar - @Model.Nome</h2>
+<h2>@Model.Nome</h2>
 
 
 
@@ -14,11 +14,11 @@
     <div class="panel-heading">
         
     </div>
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Alterar","Produto"))
     {
 
         <h2>
-            Categoria - @Model.Categoria
+            @*Categoria - @Model.Categoria*@
         </h2>
         <div class="panel-body">
             @Html.HiddenFor(m => m.ProdutoId)
@@ -54,7 +54,6 @@
 
         <div class="panel-footer">
             <input class="btn btn-primary" type="submit" value="Salvar"/>
-
             @Html.ActionLink("Cancelar Alteração","Index",null, new {@class="btn btn-default"})
         </div>
     }

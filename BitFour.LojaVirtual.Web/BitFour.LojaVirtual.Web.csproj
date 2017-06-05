@@ -176,6 +176,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administrativo\Models\" />
+    <Folder Include="Views\Autenticacao\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BitFour.LojaVirtual.Dominio\BitFour.LojaVirtual.Dominio.csproj">

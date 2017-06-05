@@ -144,8 +144,6 @@
                 beforeSend: function() {
                     var loading = "<span><em>Excluindo</em>&nbsp;<i class='glyphicon glyphicon-refresh icon-refresh-animate'></i></span>";
                     $('#deleteModal .modal-header h4').after(loading);
-                    
-
 
                 },
 
@@ -155,21 +153,18 @@
                     $('#deleteModal').modal('hide');
                     $(rowNo).animate({ opacity: 0.0 }, 400, function() {
                         $(rowNo).remove();
-                        $("#divExcluir").empty(
                     });
                 },
                 complete: function(data) {
                     $("#divexcluir").empty();
-                    $("#divexcluir").addClass("alert alert-success");
+                    $("#divexcluir").addClass("alert alert-danger");
                     $("#divexcluir").html(data.responseText);
  
 
                 }
 
-
             });
         });
 
-       
     });
 </script>

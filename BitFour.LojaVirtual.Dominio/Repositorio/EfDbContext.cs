@@ -14,6 +14,7 @@ namespace BitFour.LojaVirtual.Dominio.Repositorio
         //precisa falar qual que vai ser o mapeamento, no momento vai mapear a classe produto que foi criada
         //entao vai criar um DbSet que representa uma colecao das entidades no context
         public DbSet<Produto> Produtos { get; set; }
+        public DbSet<Administrador>Administradores { get; set; }
 
 
         //configuraçao de sistema removendo a pluralidade do entity(ex: computadores,essa configuraçao se adequa para computador)
@@ -21,6 +22,7 @@ namespace BitFour.LojaVirtual.Dominio.Repositorio
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Entity<Produto>().ToTable("Produtos");
+            modelBuilder.Entity<Administrador>().ToTable("Administradores");
         }
 
    

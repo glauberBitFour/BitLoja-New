@@ -36,6 +36,8 @@ namespace BitFour.LojaVirtual.Web.Controllers
         //guardo o estado do carrinho
         private Carrinho ObterCarrinho()
         {
+
+            //cria uma sessao para para o carrinho
             Carrinho carrinho = (Carrinho)Session["Carrinho"];
 
             if (carrinho == null)
@@ -46,6 +48,9 @@ namespace BitFour.LojaVirtual.Web.Controllers
 
             return carrinho;
         }
+
+
+
 
 
         public RedirectToRouteResult Remover(int produtoId, string returnUrl)
@@ -63,6 +68,10 @@ namespace BitFour.LojaVirtual.Web.Controllers
 
             return RedirectToAction("CarrinhoIndex", new { returnUrl });
         }
+
+
+
+
 
         public ActionResult CarrinhoIndex(string returnurl)
         {
@@ -84,6 +93,9 @@ namespace BitFour.LojaVirtual.Web.Controllers
 
             return View( new Pedido());
         }
+
+
+
 
         [HttpPost]
         public ViewResult FecharPedido(Pedido pedido)

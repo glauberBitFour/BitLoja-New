@@ -11,6 +11,8 @@ namespace BitFour.LojaVirtual.Dominio.Repositorio
 
         public Administrador ObterAdministrador(Administrador administrador)
         {
+
+            //retorna um administrador "firstorDefault" retorna o administrador ou retorna nulo
             return _context.Administradores.FirstOrDefault(a=>a.Login == administrador.Login);
         }
     }

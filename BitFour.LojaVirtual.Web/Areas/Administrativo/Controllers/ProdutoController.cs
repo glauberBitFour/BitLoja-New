@@ -44,7 +44,7 @@ namespace BitFour.LojaVirtual.Web.Areas.Administrativo.Controllers
                 _repositorio = new ProdutosRepositorio();
                 _repositorio.Salvar(produto);
                 //Manda essa mesnagem pra layoutadministrativo
-                TempData["Mensagem"] = string.Format("{0} Foi salvo com sucesso", produto.Nome);
+                TempData["mensagem"] = string.Format("{0} foi salvo com sucesso", produto.Nome);
                  return RedirectToAction("Index");
 
             }
@@ -75,6 +75,8 @@ namespace BitFour.LojaVirtual.Web.Areas.Administrativo.Controllers
 
 
             //criando Modal de confirmaçao de exlcusao do Bootstrap para excluir um produto
+
+
         [HttpPost]
         public JsonResult Excluir(int produtoId)
         {
@@ -84,7 +86,7 @@ namespace BitFour.LojaVirtual.Web.Areas.Administrativo.Controllers
 
             if (prod != null)
             {
-                mensagem = string.Format("{0} excluido com sucesso", prod.Nome);
+                mensagem = string.Format("{0} excluído com sucesso", prod.Nome);
             }
             return Json(mensagem,JsonRequestBehavior.AllowGet);
         }

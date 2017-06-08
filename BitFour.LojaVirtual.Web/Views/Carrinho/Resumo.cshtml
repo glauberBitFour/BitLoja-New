@@ -13,6 +13,7 @@
         margin-inside: 10px;
 
     }
+
     #teste {
   border: 1px solid;
   background-color:#a3a2f1;
@@ -37,10 +38,12 @@
         @if (Model.ObterValorTotal() == 0)
         {
             @Html.ActionLink("Vazio", "CarrinhoIndex", "Produto" , new { returnUrl = Request.Url.PathAndQuery })
+            
         }
         else
         {
             @Html.ActionLink("Checkout", "CarrinhoIndex", "Carrinho", new { returnUrl = Request.Url.PathAndQuery })
+            
         }
             
         

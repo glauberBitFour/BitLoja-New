@@ -52,7 +52,7 @@ namespace BitFour.LojaVirtual.Dominio.Entidades
                        .AppendLine(pedido.Endereco ?? "")
                        .AppendLine(pedido.Cidade ?? "")
                        .AppendLine(pedido.Complememento ?? "")
-                       .AppendLine("-----------------------------")
+                       .AppendLine("------------------------")
                        .AppendFormat("Para presente?: {0}", pedido.EnbrulhaPresente ? "Sim" : "Nao");
 
                     MailMessage mailMessage = new MailMessage(

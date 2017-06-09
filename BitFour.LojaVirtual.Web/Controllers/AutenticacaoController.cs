@@ -51,7 +51,7 @@ namespace BitFour.LojaVirtual.Web.Controllers
                         //se ela comecar com uma barra pq na url começa com uma barra
                         //se ela nao tiver 2 barras um uma barra e 2 barras invertidas
                         if (Url.IsLocalUrl(returnUrl) 
-                           && returnUrl > 1
+                           && returnUrl.Length > 1
                            && returnUrl.StartsWith("/")
                            && !returnUrl.StartsWith("//")
                            && !returnUrl.StartsWith("/\\"))
@@ -61,7 +61,8 @@ namespace BitFour.LojaVirtual.Web.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("","Administrador não localizado");
+                    //TempData["mens"] = string.Format("{0} foi salvo com sucesso", admin.Login);
+                     ModelState.AddModelError("","Administrador não localizado");
                     //Mensagem de Admin nao lcalizado
                 }
             }

@@ -8,9 +8,9 @@ namespace BitFour.LojaVirtual.Web.Areas.Administrativo.Controllers
 
     //essa classe é responsavel por fazer tod o gerenciamento de produtos do sistema
 
+    [Authorize]
     public class ProdutoController : Controller
     {
-
         private ProdutosRepositorio _repositorio;
 
 

@@ -5,6 +5,18 @@
     ViewBag.Title = "Administrativo Produto";
     Layout = "~/Areas/Administrativo/Views/Shared/_AdministrativoLayout.cshtml";
 }
+<div align="right" style="padding-right: 15px;">
+    @if (Request.IsAuthenticated)
+    {
+        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+            <i class="icon-user">
+            </i>Olá, @User.Identity.Name<span class="caret"></span>
+        </a>
+
+        @Html.ActionLink("Sair", "Logoff", "Logoff")
+
+    }
+</div>
 
 @* Tela administrativa criando crud para produtos  *@
 @*<div class="alert alert-info" id="mensagem"></div>*@
@@ -25,9 +37,7 @@
         <h3>Bitfour Loja virtual</h3>
     </div>
 
-    <div id="divexcluir">
-        
-    </div>
+    <div id="divexcluir"></div>
 
 
     <div class="panel-body"> @*<a href="/Administrativo/NovoProduto?length=7" class="btn btn-default">Novo Produto</a>*@
@@ -81,5 +91,5 @@
 
 
 
-<!--criando o modal de confirmaçao-->
+<!--depois de criado o modal chama ele aqui, onde é criado o modal de confirmaçao-->
 @Html.Partial("Confirmacao")

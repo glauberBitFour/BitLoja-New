@@ -31,11 +31,21 @@ namespace BitFour.LojaVirtual.Web
             //----------------------------------------------------------------------------------------------------------------------------------------------
 
 
+            //routes.MapRoute(null, new {controller = "Autenticacao", action = "Logoff", }.ToString());
+            //routes.MapRoute(name: null, url: "", defaults: new { controller = "Autenticacao", action = "Logoff" });
+
+       
+       
+            routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Autenticacao", action = "Logoff", id = UrlParameter.Optional }
+            );
+        
 
 
-
-            //terceira rota somente a os produtos da categoria ex /Futebol
-            routes.MapRoute(null, "{categoria}", new { controller = "Vitrine", action = "ListaProdutos", pagina = 1 });
+        //terceira rota somente a os produtos da categoria ex /Futebol
+        routes.MapRoute(null, "{categoria}", new { controller = "Vitrine", action = "ListaProdutos", pagina = 1 });
 
             //----------------------------------------------------------------------------------------------------------
 
@@ -59,11 +69,7 @@ namespace BitFour.LojaVirtual.Web
 
 
 
-            routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+          
 
             routes.MapRoute(null, "{controller}/{action}");
 

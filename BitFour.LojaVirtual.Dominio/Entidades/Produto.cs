@@ -1,11 +1,12 @@
 ﻿
 
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
 namespace BitFour.LojaVirtual.Dominio.Entidades
 {
-     public class Produto
+    public class Produto
     {
 
         //Hidden input quer duzer que esta escondendo o Id na View
@@ -24,11 +25,15 @@ namespace BitFour.LojaVirtual.Dominio.Entidades
 
 
         [Required(ErrorMessage = "O preço do produto é obrigatorio =)")]
-        [Range(0.01,double.MaxValue,ErrorMessage = "Valor inválido")]
+        [Range(0.01, double.MaxValue, ErrorMessage = "Valor inválido")]
         public decimal Preco { get; set; }
 
 
         [Required(ErrorMessage = "Definir a categoria é obrigatorio =D")]
         public string Categoria { get; set; }
+
+        public byte[] Imagem { get; set; }
+
+        public string ImagemMimeType { get; set; }
     }
 }

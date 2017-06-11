@@ -138,6 +138,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Administrativo\AdministrativoAreaRegistration.cs" />
+    <Compile Include="Areas\Administrativo\Controllers\LogoffController.cs" />
     <Compile Include="Areas\Administrativo\Controllers\ProdutoController.cs" />
     <Compile Include="Controllers\AutenticacaoController.cs" />
     <Compile Include="Controllers\CarrinhoController.cs" />
@@ -178,6 +179,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administrativo\Models\" />
+    <Folder Include="Areas\Administrativo\Views\Logoff\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BitFour.LojaVirtual.Dominio\BitFour.LojaVirtual.Dominio.csproj">

@@ -1,4 +1,6 @@
 ﻿using System.Linq;
+using System.Runtime.Remoting.Messaging;
+using System.Web;
 using System.Web.Mvc;
 using BitFour.LojaVirtual.Dominio.Entidades;
 using BitFour.LojaVirtual.Dominio.Repositorio;
@@ -34,13 +36,21 @@ namespace BitFour.LojaVirtual.Web.Areas.Administrativo.Controllers
 
         }
 
+        //para receber a imagem é necessario assinar no metodo 
+        //com o tipo Httppostedfilebase para imagem e ela pode ser nula ou nao...
         [HttpPost]
-        public ActionResult Alterar(Produto produto)
-
-        {
+        public ActionResult Alterar(Produto produto, HttpPostedFileBase imagem = null)
+{
             //Model state verifica no modelo, na classe de produto se algum campo é obrigatorio
             if (ModelState.IsValid)
             {
+
+                if (imagem != null)
+                {
+                    produto.ImagemMimeType = imagem.ContentType;
+                    produto.Imagem = new byte[imagem.ContentLength];
+                    imagem.InputStream.Read(produto.Imagem, 0, imagem.ContentLength);
+                }
                 _repositorio = new ProdutosRepositorio();
                 _repositorio.Salvar(produto);
                 //Manda essa mesnagem pra layoutadministrativo
@@ -89,6 +99,20 @@ namespace BitFour.LojaVirtual.Web.Areas.Administrativo.Controllers
                 mensagem = string.Format("{0} excluído com sucesso", prod.Nome);
             }
             return Json(mensagem,JsonRequestBehavior.AllowGet);
+        }
+
+
+        public FileContentResult ObterImagem(int produtoId)
+        {
+            _repositorio = new ProdutosRepositorio();
+            Produto prod = _repositorio.Produtos
+                .FirstOrDefault(p => p.ProdutoId == produtoId);
+
+            if (prod != null)
+            {
+                return File(prod.Imagem, prod.ImagemMimeType);
+            }
+            return null;
         }
 
     }

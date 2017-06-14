@@ -40,6 +40,7 @@ namespace BitFour.LojaVirtual.Web.Controllers
                     if (!Equals(administrador.Senha, admin.Senha))
                     {
                         ModelState.AddModelError("", "Senha não confere!!!");
+                       
                     }
                     else
                     {
@@ -56,8 +57,11 @@ namespace BitFour.LojaVirtual.Web.Controllers
                             && returnUrl.StartsWith("/")
                             && !returnUrl.StartsWith("//")
                             && !returnUrl.StartsWith("/\\"))
-
+                        {
                             return Redirect(returnUrl);
+                        }
+                        //return Redirect("/Administrativo/Produto/Index");
+                        return RedirectToAction("Index", "Produto", new { area = "Administrativo" });
                     }
                 }
                 else
@@ -66,6 +70,7 @@ namespace BitFour.LojaVirtual.Web.Controllers
                     ModelState.AddModelError("", "Administrador não localizado");
                     //Mensagem de Admin nao lcalizado
                 }
+        
             }
             return View(new Administrador());
         }

@@ -1,63 +1,89 @@
 ﻿ @model BitFour.LojaVirtual.Dominio.Entidades.Produto
 
+
 @{
-    ViewBag.Title = "Alterar" + @Model.Nome;
+    ViewBag.Title = "Alterar  " + @Model.Nome;
     Layout = "~/Areas/Administrativo/Views/Shared/_AdministrativoLayout.cshtml";
-    /*@*utilizando o mesmo layout da area administrativa setado quando for gerar o scalfoding*@*/
 }
-
-<h2>@Model.Nome</h2>
-
-
 
 <div class="panel">
     <div class="panel-heading">
-        
+        <h3>Alterar @Model.Nome</h3>
     </div>
-    @using (Html.BeginForm("Alterar","Produto"))
-    {
 
-        <h2>
-            @*Categoria - @Model.Categoria*@
-        </h2>
+    @*Informar senão ao criar não irá achar*@
+    @using (Html.BeginForm("Alterar", "Produto", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
         <div class="panel-body">
             @Html.HiddenFor(m => m.ProdutoId)
-            @foreach (var property  in ViewData.ModelMetadata.Properties)
+            @foreach (var property in ViewData.ModelMetadata.Properties)
             {
-                if (property.PropertyName != "ProdutoId")
+                // if (property.PropertyName != "ProdutoId")
+                //  {
+
+
+                switch (property.PropertyName)
                 {
+                    case "ProdutoId":
+                    case "Imagem":
+                    case "ImagemMimeType":
+                        break;
+                    default:
 
-                    
 
-                    <div class="form-group">
-                        <label>
-                            <!--coloca o nome de cada atributo do modelo produto-->
-                            @(property.DisplayName ?? property.PropertyName)
-                        </label>
-                        @if (property.PropertyName == "Descricao")
-                        {
-                            @Html.TextArea(property.PropertyName, null, new {@class = "form-control", rows = 5})
-                        }
-                        else
-                        {
-                            //renderiza os campos que nao forem igual a descriçao, Nome, descriçao e preco do modelo produto
-                            @Html.TextBox(property.PropertyName, null, new {@class = "form-control"})
-                        }
+                        <div class="form-group">
+                            <label>
+                                @(property.DisplayName ?? property.PropertyName)
+                            </label>
+                            @if (property.PropertyName == "Descricao")
+                            {
+                                @Html.TextArea(property.PropertyName, null, new { @class = "form-control", rows = 5 })
+                            }
+                            else
+                            {
+                                @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
+                            }
+                            @Html.ValidationMessage(property.PropertyName)
+                        </div>
 
-                        <!--Helper para validar o formulario,para cada item esta criando uma validaçao -->
-                        @Html.ValidationMessage(property.PropertyName)
-                    </div>
+                        break;
                 }
             }
+
+
+            @*Upload*@
+            <div class="form-group">
+                <div style="position:relative;">
+                    <label>Imagem</label>
+                    <a class='btn' href='javascript:;'>
+                        Selecione a imagem...
+                        <input type="file" name="Imagem" size="40" style="position:absolute;z-index:2;top:0; left:0;filter: alpha(opacity=0); opacity:0; background-color:transparent;color:transparent;" onchange='$("#upload-file-info").html($(this).val());'>
+                    </a>
+                    <span class='label label-info' id="upload-file-info"></span>
+                </div>
+                @if (Model.Imagem == null)
+                {
+
+                    <div class="form-control-static">Nenhuma imagem</div>
+                }
+                else
+                {
+                    <img class="img-thumbnail" width="120" height="120" src="@Url.Action("ObterImagem", "Produto", new { Model.ProdutoId })" />
+                }
+            </div>
         </div>
 
-
         <div class="panel-footer">
-            <input class="btn btn-primary" type="submit" value="Salvar"/>
-            @Html.ActionLink("Cancelar Alteração","Index",null, new {@class="btn btn-default"})
+            <input type="submit" value="Salvar" class="btn btn-primary" />
+            @Html.ActionLink("Cancelar e retornar", "Index", null, new { @class = "btn btn-default" })
         </div>
     }
 </div>
+
+
+
+
+System.FormatException: A entrada não é uma cadeia de caracteres de Base 64 válida, pois contém um caractere que não é de base 64, mais de dois caracteres de preenchimento ou um caractere ilegal entre os caracteres de preenchimento.
 
 
 <!--Para fazer a validaçao pelo javascript para preço é preciso baixar no projeto web PM> Install-Package Microsoft.jQuery.Unobstrusive.Validation -->

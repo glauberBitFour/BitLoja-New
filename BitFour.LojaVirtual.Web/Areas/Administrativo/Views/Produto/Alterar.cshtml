@@ -57,7 +57,7 @@
                     <label>Imagem</label>
                     <a class='btn' href='javascript:;'>
                         Selecione a imagem...
-                        <input type="file" name="Imagem" size="40" style="position:absolute;z-index:2;top:0; left:0;filter: alpha(opacity=0); opacity:0; background-color:transparent;color:transparent;" onchange='$("#upload-file-info").html($(this).val());'>
+                        <input type="file" name="Image" size="40" style="position:absolute;z-index:2;top:0; left:0;filter: alpha(opacity=0); opacity:0; background-color:transparent;color:transparent;" onchange='$("#upload-file-info").html($(this).val());'>
                     </a>
                     <span class='label label-info' id="upload-file-info"></span>
                 </div>
@@ -79,39 +79,3 @@
         </div>
     }
 </div>
-
-
-
-
-System.FormatException: A entrada não é uma cadeia de caracteres de Base 64 válida, pois contém um caractere que não é de base 64, mais de dois caracteres de preenchimento ou um caractere ilegal entre os caracteres de preenchimento.
-
-
-<!--Para fazer a validaçao pelo javascript para preço é preciso baixar no projeto web PM> Install-Package Microsoft.jQuery.Unobstrusive.Validation -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@*@using (Html.BeginForm())
-{
-    @Html.EditorForModel()
-
-    <input type="submit" value="Salvar"/>
-    @Html.ActionLink("Cancelar e retornar","Index")
-    
-
-}*@
-
-

@@ -46,7 +46,7 @@ namespace BitFour.LojaVirtual.Web.Controllers
                     {
                         //validaçao do forms que passa o usuario com seu login e passa o parametro falando que o cookie nao é permanente, 
                         //entao se o usuario sair do sistema terá que passar as informaçoes novame
-                        FormsAuthentication.SetAuthCookie(admin.Login, false);
+                        FormsAuthentication.SetAuthCookie(admin.Login,false);
 
 
                         //validando a url se ela for maior que 1 quer dizer que a url nao esta vazia

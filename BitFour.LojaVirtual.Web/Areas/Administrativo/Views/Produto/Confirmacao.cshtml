@@ -1,5 +1,5 @@
 ﻿<!--Modal para confirmaçao de exclusao de produto-->
-1
+
 
 @*<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
      <div class="modal-dialog" role="document">
@@ -142,9 +142,14 @@
                 dataType: 'json',
                 data: { produtoId: id },
                 beforeSend: function() {
-                    var loading = "<span><em>Excluindo</em>&nbsp;<i class='glyphicon glyphicon-refresh icon-refresh-animate'></i></span>";
+                    var loading = "<div id='teste' align='center'>" +
+                                            "<span><em>Excluindo</em>&nbsp;" +
+                                              "<i class='glyphicon glyphicon-refresh icon-refresh-animate msg-excluindo'>" +
+                                                 "</i></span>" +
+                                      "</div>";
                     $('#deleteModal .modal-header h4').after(loading);
-
+                    
+                    
                   
 
 
@@ -163,12 +168,15 @@
                     $("#divexcluir").addClass("alert alert-success"); 
                     $("#divexcluir").html(data.responseText);
                     $("#deleteModal").modal('hide');
+                    $('#deleteModal #teste').remove();
 
                     //window.location.reload(0).localName('#deleteModal');
                 } 
 
             });
         });
+        
 
     });
+    
 </script>
